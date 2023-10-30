@@ -57,7 +57,7 @@ describe('Content Page [ENG]', () => {
             })
             .should('have.css', 'font-weight', '700')
             .should('have.css', 'color', 'rgb(216, 57, 51)')
-        
+
         // h2
         // font-size: 1.95rem;
         cy.get('h2')
@@ -67,7 +67,7 @@ describe('Content Page [ENG]', () => {
                     .then(el => {
                         const win = cy.state('window')
                         const styles = win.getComputedStyle(el[0])
-        
+
                         const fontFamily = styles.getPropertyValue('font-family')
                         expect(fontFamily).to.include('Merriweather Web')
                     })
@@ -84,7 +84,7 @@ describe('Content Page [ENG]', () => {
                     .then(el => {
                         const win = cy.state('window')
                         const styles = win.getComputedStyle(el[0])
-        
+
                         const fontFamily = styles.getPropertyValue('font-family')
                         expect(fontFamily).to.include('Merriweather Web')
                     })
@@ -113,11 +113,11 @@ describe('Content Page [ENG]', () => {
             .find('#sm-share')
             .should('exist')
             .get('div.share-icons>a').eq(0)
-            .should('have.attr', 'href', 'http://www.facebook.com/sharer/sharer.php?u=http://localhost/disaster-assistance&v=3')
+            .should('have.attr', 'href', 'http://www.facebook.com/sharer/sharer.php?u=https://www.usa.gov/disaster-assistance&v=3')
             .get('div.share-icons>a').eq(1)
-            .should('have.attr', 'href', 'http://twitter.com/intent/tweet?source=webclient&text=http://localhost/disaster-assistance')
+            .should('have.attr', 'href', 'http://twitter.com/intent/tweet?source=webclient&text=https://www.usa.gov/disaster-assistance')
             .get('div.share-icons>a').eq(2)
-            .should('have.attr', 'href', 'mailto:?subject=http://localhost/disaster-assistance')
+            .should('have.attr', 'href', 'mailto:?subject=https://www.usa.gov/disaster-assistance')
     })
     it('BTE 34: Do you have a question block appears at bottom of content page with icons and links to phone and chat', () => {
         // test question box
@@ -156,6 +156,6 @@ describe('Content Page [ENG]', () => {
             .url()
             .should('include', '#main-content')
     })
-    
+
 
 })

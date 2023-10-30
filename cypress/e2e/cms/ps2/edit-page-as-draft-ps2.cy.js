@@ -3,24 +3,24 @@ describe('Local cms login', () => {
     //log into local cms
     Cypress.on('uncaught:exception', () => false)
 
-    cy.visit('http://localhost/user/login')
+    cy.visit('https://cms-dev.usa.gov/user/login')
     cy.get('[data-drupal-selector="edit-name"]').type('root')
-    cy.get('[data-drupal-selector="edit-pass"]').type('usatest')
+    cy.get('[data-drupal-selector="edit-pass"]').type('Finn')
     cy.get('[data-drupal-selector="edit-submit"]').click()
 
     //URL of page to edit
-    cy.visit('http://localhost/food-help')
-    
+    cy.visit('https://cms-dev.usa.gov/food-help')
+
     //Select the edit button to edit the page
     cy.get('#block-usagov-local-tasks')
     cy.get('[data-drupal-link-system-path="node/120/edit"]').click()
-    
+
     //Edit Page Intro
     cy.get("#edit-field-page-intro-0-value").type("{moveToEnd} This is a test.")
-    
+
     //select state of page
     cy.get("#edit-moderation-state-0-state").select("Draft")
-   
+
     //Save page
     cy.get('[ data-drupal-selector="edit-submit" ]').click()
 
@@ -31,8 +31,8 @@ describe('Local cms login', () => {
 
     cy.get('[data-drupal-selector="edit-node-revisions-table-0-operations"] > li.dropbutton-toggle > button.dropbutton__toggle').click()
     cy.get('li.delete > a').contains('Delete').click()
-    cy.get('#edit-submit').click()    
-    
+    cy.get('#edit-submit').click()
+
     cy.get('[data-original-order="0"] > a').click()
     cy.screenshot('deleteDraft')
   })

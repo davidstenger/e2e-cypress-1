@@ -5,7 +5,7 @@ describe('Local cms login', () => {
     //login
     cy.visit('http://localhost/user/login')
     cy.get('[data-drupal-selector="edit-name"]').type('root')
-    cy.get('[data-drupal-selector="edit-pass"]').type('usatest')
+    cy.get('[data-drupal-selector="edit-pass"]').type('Finn')
     cy.get('[data-drupal-selector="edit-submit"]').click()
 
     //logout

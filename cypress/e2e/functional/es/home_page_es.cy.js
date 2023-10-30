@@ -9,7 +9,7 @@ describe('Home Page [ES]', () => {
         cy.get('header')
             .find('.usa-banner__header')
             .should('be.visible')
-        
+
         // Accordion content should not be visible
         cy.get('header')
             .find('.usa-banner__content')
@@ -53,7 +53,7 @@ describe('Home Page [ES]', () => {
     it('BTS 5: Search bar appears with search icon in header region; can successfully complete search', () => {
         const typedText = 'impuestos'
 
-        // Enters query into search input 
+        // Enters query into search input
         cy.get('header')
             .find('#search-field-small')
             .type(typedText)
@@ -63,8 +63,8 @@ describe('Home Page [ES]', () => {
         // Origin URL should now be search.gov
         const sentArgs = { query: typedText }
         cy.origin(
-            'https://search.usa.gov/', 
-            { args: sentArgs }, 
+            'https://search.usa.gov/',
+            { args: sentArgs },
             ({ query }) => {
                 cy.get('#query').should('have.value', query)
             }
@@ -82,29 +82,29 @@ describe('Home Page [ES]', () => {
             .find('#search-field-small')
             .next()
             .click()
-            
+
         // Verify URL is search.gov
         cy.origin('https://search.usa.gov/', () => {
-            cy.url().should('include', 'search.usa.gov')
+        cy.url().should('include', 'search.usa.gov')
         })
     })
     it('BTS 6: Main menu appears after header; links work appropriately. All topics link goes down the page.', () => {
         // Main menu appears
         cy.get('.usa-nav__primary')
             .should('be.visible')
-        
+
         // Test All Topics link
         cy.get('#usa-nav__temas')
             .find('a')
             .click()
-        
+
         cy.url().should('include', '#all-topics-header')
 
         // Test About link
         cy.get('#usa-nav__acerca')
             .find('a')
             .click()
-        
+
         cy.url().should('include', '/acerca-de-estados-unidos')
 
         // Test Benefits link
@@ -112,7 +112,7 @@ describe('Home Page [ES]', () => {
         cy.get('#usa-nav_beneficios')
             .find('a')
             .click()
-        
+
         cy.url().should('include', '/beneficios-gobierno')
 
         // Test Taxes link
@@ -120,7 +120,7 @@ describe('Home Page [ES]', () => {
         cy.get('#usa-nav_impuestos')
             .find('a')
             .click()
-        
+
         cy.url().should('include', '/impuestos')
 
         // Test Immigration link
@@ -128,7 +128,7 @@ describe('Home Page [ES]', () => {
         cy.get('#usa-nav_inmigracion')
             .find('a')
             .click()
-        
+
         cy.url().should('include', '/inmigracion-ciudadania-estados-unidos')
 
         // Test Travel link
@@ -136,14 +136,14 @@ describe('Home Page [ES]', () => {
         cy.get('#usa-nav_viajes')
             .find('a')
             .click()
-        
+
         cy.url().should('include', '/viajes')
     })
     it('BTS 7: Banner area/image appears with Welcome text box', () => {
         cy.get('.banner-div')
             .should('be.visible')
             .should('have.css', 'background-image')
-        
+
         cy.get('.welcome-box')
             .should('be.visible')
     })
@@ -151,7 +151,7 @@ describe('Home Page [ES]', () => {
         cy.get('.how-box')
             .contains('Cómo puedo')
             .should('be.visible')
-        
+
         // Verify there are 4 links
         cy.get('.how-box')
             .find('a')
@@ -173,13 +173,13 @@ describe('Home Page [ES]', () => {
         cy.get('.jump')
             .contains('Vaya a todos')
             .should('be.visible')
-            
+
         cy.get('.jump')
             .find('img')
             .should('be.visible')
             .should('have.attr', 'src', '/themes/custom/usagov/images/Reimagined_Jump_to_Arrow.svg')
             .should('have.attr', 'alt', 'Jump to all topics and services')
-        
+
         // Verify link is valid
         cy.get('.jump')
             .each((el) => {
@@ -247,7 +247,7 @@ describe('Home Page [ES]', () => {
             .filter('[aria-hidden="true"]')
             .as('hidden-slides')
             .should('have.length', num_events - num_visible)
-           
+
         /*
          * Testing arrow buttons
          */
@@ -259,23 +259,23 @@ describe('Home Page [ES]', () => {
                 cy.get('.life-events-carousel')
                     .find('.next')
                     .click()
-            
+
                 // Verify this slide is now visible
                 cy.wrap(el)
                     .should('not.have.attr', 'aria-hidden')
-                
+
                 // Verify the 2 previous slides are visible
                 cy.wrap(el).prev()
                     .should('not.have.attr', 'aria-hidden')
                 cy.wrap(el).prev().prev()
                     .should('not.have.attr', 'aria-hidden')
-                
+
                 // Verify correct number of hidden card slides
                 cy.get('.life-events-carousel')
                     .find('.slide')
                     .filter('[aria-hidden="true"]')
                     .should('have.length', num_events - num_visible)
-                
+
                 // Current card link is valid
                 cy.wrap(el).find('a')
                     .invoke('attr', 'href')
@@ -286,7 +286,7 @@ describe('Home Page [ES]', () => {
                     })
             })
 
-        // Click prev button back to the front 
+        // Click prev button back to the front
         for (let i = 0; i < num_events - num_visible; i++) {
             cy.get('.life-events-carousel')
                 .find('.previous')
@@ -309,7 +309,7 @@ describe('Home Page [ES]', () => {
             .find('.slide')
             .filter('[aria-hidden="true"]')
             .should('have.length', num_events - num_visible)
-        
+
         /*
          * Testing nav circles
          */
@@ -332,7 +332,7 @@ describe('Home Page [ES]', () => {
             .prev()
             .prev()
             .should('not.have.attr', 'aria-hidden')
-        
+
         // Click first nav circle
         cy.get('.carousel__navigation_button')
             .first()
@@ -367,13 +367,13 @@ describe('Home Page [ES]', () => {
                             .its('status')
                             .should('eq', 200)
                     })
-                
+
                 // Verify number of children
                 cy.wrap(el).find('a')
                     .children()
                     .should('have.length', 3)
 
-                // Css check for hover state 
+                // Css check for hover state
                 cy.wrap(el)
                     .realHover()
                     .should('have.css', 'background-color', 'rgb(204, 236, 242)')

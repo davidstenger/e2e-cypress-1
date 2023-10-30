@@ -3,11 +3,14 @@ const getCompareSnapshotsPlugin = require('cypress-image-diff-js/dist/plugin')
 const { beforeRunHook } = require('cypress-mochawesome-reporter/lib')
 
 module.exports = defineConfig({
+
+  projectId: "o3om3z",
+
   reporter: 'cypress-mochawesome-reporter',
   video: false,
   screenshotOnRunFailure: true,
   e2e: {
-    baseUrl: 'http://localhost',
+    baseUrl: 'https://www.usa.gov',
     viewportWidth: 1280,
     viewportHeight: 800,
     "retries": {

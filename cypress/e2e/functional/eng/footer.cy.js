@@ -41,8 +41,8 @@ describe('Footer [ENG]', () => {
         // Origin URL should now be connect.usa.gov
         const sentArgs = { email: validEmail }
         cy.origin(
-            'https://connect.usa.gov/', 
-            { args: sentArgs }, 
+            'https://connect.usa.gov/',
+            { args: sentArgs },
             ({ email }) => {
                 cy.get('input')
                     .filter('[name="email"]')
@@ -55,15 +55,15 @@ describe('Footer [ENG]', () => {
         cy.get('#footer-email')
             .type(validEmail)
             .should('have.value', validEmail)
-        
+
         cy.get('.usa-sign-up')
             .find('button[type="submit"]')
             .click()
 
         // Origin URL should now be connect.usa.gov
         cy.origin(
-            'https://connect.usa.gov/', 
-            { args: sentArgs }, 
+            'https://connect.usa.gov/',
+            { args: sentArgs },
             ({ email }) => {
                 cy.get('input')
                     .filter('[name="email"]')
@@ -75,8 +75,8 @@ describe('Footer [ENG]', () => {
         for (let i = 0; i < socials.length; i++) {
             cy.get('.usa-footer__contact-links')
                 .find(`[alt="${socials[i].name} USAGov"]`)
-                .should('have.attr', 'src', `/themes/custom/usagov/images/footer_icon_${socials[i].name.toLowerCase()}.svg`)
-        
+                .should('have.attr', 'src', '/themes/custom/usagov/images/social-media-icons/${socials[i].name.toLowerCase()}.svg')
+
             cy.get('.usa-footer__contact-links')
                 .find(`[alt="${socials[i].name} USAGov"]`)
                 .parent()

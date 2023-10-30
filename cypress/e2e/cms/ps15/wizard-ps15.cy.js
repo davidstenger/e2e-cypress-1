@@ -5,12 +5,12 @@ describe('Local cms login', () => {
 
     cy.visit('http://localhost/user/login')
     cy.get('[data-drupal-selector="edit-name"]').type('root')
-    cy.get('[data-drupal-selector="edit-pass"]').type('usatest')
+    cy.get('[data-drupal-selector="edit-pass"]').type('Finn')
     cy.get('[data-drupal-selector="edit-submit"]').click()
-    
+
     //navigate menu to add content to a federal directory page
     cy.get('ul > li > a').contains('Wizard').focus().click()
-    
+
     //fill out cms basic page
     cy.get("#edit-title-0-value").type("Wizard Test Title")
 
@@ -21,7 +21,7 @@ describe('Local cms login', () => {
     //meta description
     cy.get("#edit-field-meta-description-0-value").type("This is a test wizard meta description")
 
-    
+
     //Put content in the Body
     /*
     cy.get("iframe").first()
@@ -57,6 +57,6 @@ describe('Local cms login', () => {
     cy.get('#edit-submit--2').click()
     cy.get('#edit-submit').click()
     */
-  
+
   })
 })

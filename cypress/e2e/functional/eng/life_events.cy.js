@@ -1,8 +1,8 @@
 describe('Life Events [ENG]', () => {
     beforeEach(() => {
-        cy.visit('/life-events') 
+        cy.visit('/life-events')
     })
-    it('BTE 53: Landing page looks correct with banner image, imge cards', () => {
+    it('BTE 53: Landing page looks correct with banner image, image cards', () => {
         // test banner
         cy.get('#block-usagov-content')
             .find('section')
@@ -17,7 +17,7 @@ describe('Life Events [ENG]', () => {
         cy.get('ul.usa-card-group')
             .find('li')
             .should('have.length', 6)
-        
+
         // test first card
         cy.get('ul.usa-card-group')
             .find('li')
@@ -53,7 +53,7 @@ describe('Life Events [ENG]', () => {
             .click()
             .url().should('include', '/financial-hardship')
             .go('back')
-        
+
         // test fifth card
         cy.get('ul.usa-card-group')
             .find('li')
@@ -62,7 +62,7 @@ describe('Life Events [ENG]', () => {
             .click()
             .url().should('include', '/disaster')
             .go('back')
-        
+
         // test sixth card
         cy.get('ul.usa-card-group')
             .find('li')

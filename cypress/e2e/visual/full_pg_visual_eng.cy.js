@@ -2,8 +2,8 @@ const subpaths = require('../../fixtures/subpaths.json')
 
 describe('Visual testing for English site', () =>{
     subpaths.eng.forEach((subpath) => {
-        it(`Compare full page screenshot for http://localhost/${subpath}`, () => {
-            cy.visit(`http://localhost/${subpath}`, {failOnStatusCode: false})
+        it(`Compare full page screenshot for https://beta-dev.usa.gov/${subpath}`, () => {
+            cy.visit(`https://beta-dev.usa.gov/${subpath}`, {failOnStatusCode: false})
 
             const retryOptions = {
                 limit: 0, // max number of retries
