@@ -1,6 +1,6 @@
 describe('Federal Directory [ENG]', () => {
     beforeEach(() => {
-        cy.visit('/agency-index') 
+        cy.visit('/agency-index')
     })
 
     it('BTE 48: Landing page: letter name navigation', () => {
@@ -8,7 +8,7 @@ describe('Federal Directory [ENG]', () => {
         cy.get('ul.usagov-directory-container-az')
             .find('li')
             .should('have.length', 22)
-        
+
         cy.get('ul.usagov-directory-container-az')
             .find('li')
             .each((el) => {
